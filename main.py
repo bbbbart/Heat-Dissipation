@@ -6,6 +6,7 @@ fig, ax = plt.subplots()
 
 diffusion_rate = 0.1
 grid = np.zeros((25, 25))
+ghost_grid = np.zeros((27,27))
 grid[12,12] = 500
 grid[13,12] = 250
 grid[11,12] = 250
@@ -21,17 +22,22 @@ image = ax.imshow(grid, vmin = 0, vmax = 500, cmap='magma', interpolation = 'bil
 scale = fig.colorbar(image)
 
 def updateGrid(frame):
-    center = grid[1:-1, 1:-1]
-    up = grid[:-2, 1:-1]
-    down = grid[2:, 1:-1]
-    left = grid[1:-1, :-2]
-    right = grid[1:-1, 2:]
+    global grid
+
+    ghost_grid[1:-1, 1:-1] = grid
+    ghost_grid[0::len(grid[0]), 1:-1] = grid[0::len(grid[0])]
+    ghost_grid[1:-1, 0::len(grid[0])] = grid[:, 0::len(grid[0])]
+
+    up = ghost_grid[:-2, 1:-1]
+    down = ghost_grid[2:, 1:-1]
+    left = ghost_grid[1:-1, :-2]
+    right = ghost_grid[1:-1, 2:]
 
     total_heat = np.sum(grid)
 
-    heat_update = np.pad(center + diffusion_rate * ((up + down + left + right) - 4 * center), 1, mode = 'constant') 
-    grid = heat_update
-    
+    ghost_grid[1:-1, 1:-1] = grid + diffusion_rate * ((up + down + left + right) - 4 * grid)
+    grid = ghost_grid[1:-1, 1:-1]
+
     image.set_data(grid)
     ax.set_title(f"Total heat: {total_heat}")
     return(image)
