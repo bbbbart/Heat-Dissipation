@@ -13,8 +13,8 @@ scale = fig.colorbar(img)
 plt.subplots_adjust(bottom = 0.2)
 
 def resetGrid():
-   grid.fill(0)
-   ghost_grid.fill(0)
+  grid.fill(0)
+  ghost_grid.fill(0)
 
 def updateGrid(frame):
     global grid
@@ -35,8 +35,8 @@ def updateGrid(frame):
 
       img.set_data(grid)
       ax.set_title(f"Total heat: {total_heat}")
-      return(img)
+      return(img,)
   
     else:
       ax.set_title("(Paused)")
-      return(img)
+      return(img,)

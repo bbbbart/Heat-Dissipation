@@ -2,7 +2,7 @@ import simulation
 import widgets
 
 hold = False
-heat_intensity = 50
+heat_intensity = 100
 brush_size = 1
 mode = True
 
@@ -32,12 +32,16 @@ def addHeat(event):
     elif event.name == 'button_press_event':
       hold = True
 
-    if event.name == 'button_press_event' and mode:
+    if event.name == 'button_press_event':
       simulation.grid[int(event.ydata), int(event.xdata)] += heat_intensity
+
     elif event.name == 'motion_notify_event'and hold and not mode:
-      simulation.grid[int(event.ydata)-brush_size: int(event.ydata)+brush_size,
-        int(event.xdata)-brush_size: int(event.xdata)+brush_size] += heat_intensity
-    simulation.img.set_data(simulation.grid)
+      if brush_size == 1:
+        simulation.grid[int(event.ydata), int(event.xdata)] += heat_intensity
+      else:
+        simulation.grid[int(event.ydata)-brush_size: int(event.ydata)+brush_size,
+          int(event.xdata)-brush_size: int(event.xdata)+brush_size] += heat_intensity
+  simulation.img.set_data(simulation.grid)
 
 def updateDiffusion(val):
    simulation.diffusion_rate = widgets.diffusion_slider.val
@@ -45,3 +49,7 @@ def updateDiffusion(val):
 def updateIntensity(val):
     global heat_intensity 
     heat_intensity = widgets.intensity_slider.val
+
+def updateBrush(val):
+    global brush_size
+    brush_size = int(widgets.brush_slider.val)
