@@ -31,7 +31,7 @@ def updateGrid(frame):
 
       total_heat = np.sum(grid)
 
-      grid = grid + diffusion_rate * ((up + down + left + right) - 4 * grid) ## updates center of ghost grid while also using border cells for calculations
+      grid += diffusion_rate * ((up + down + left + right) - 4 * grid) ## updates center of ghost grid while also using border cells for calculations
 
       img.set_data(grid)
       ax.set_title(f"Total heat: {total_heat}")

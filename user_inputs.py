@@ -8,12 +8,9 @@ mode = True
 
 def buttonPresses(event):
     if event.key ==  ' ':
-      if simulation.pause:
-        simulation.pause = False
-      else:
-        simulation.pause = True
+      simulation.pause = not simulation.pause
     if event.key == 'r':
-       simulation.resetGrid()
+      simulation.resetGrid()
 
 def changeMode(event):
    global mode
@@ -31,16 +28,15 @@ def addHeat(event):
       hold = False
     elif event.name == 'button_press_event':
       hold = True
-
     if event.name == 'button_press_event':
       simulation.grid[int(event.ydata), int(event.xdata)] += heat_intensity
-
-    elif event.name == 'motion_notify_event'and hold and not mode:
+    elif event.name == 'motion_notify_event' and hold and not mode:
       if brush_size == 1:
         simulation.grid[int(event.ydata), int(event.xdata)] += heat_intensity
       else:
         simulation.grid[int(event.ydata)-brush_size: int(event.ydata)+brush_size,
           int(event.xdata)-brush_size: int(event.xdata)+brush_size] += heat_intensity
+        
   simulation.img.set_data(simulation.grid)
 
 def updateDiffusion(val):
