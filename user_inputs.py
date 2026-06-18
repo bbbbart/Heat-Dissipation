@@ -16,10 +16,10 @@ def changeMode(event):
    global mode
    if mode:
       mode = False
-      widgets.mode_button.label.set_text('Paint Mode')
+      widgets.mode_button.label.set_text('Mode: Paint')
    else:
       mode = True
-      widgets.mode_button.label.set_text('Click Mode')
+      widgets.mode_button.label.set_text('Mode: Click')
 
 def addHeat(event):
   global hold

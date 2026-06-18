@@ -11,6 +11,9 @@ fig.set_size_inches(8,6)
 img = ax.imshow(grid, vmin = 0, vmax = 500, cmap='magma', interpolation = 'bilinear')
 scale = fig.colorbar(img)
 plt.subplots_adjust(bottom = 0.2)
+fig.canvas.manager.set_window_title("Heat Dissipation")
+plt.text(26, 30.5, "Keyboard Functions: \nR = reset \nSpace = pause", fontsize = 10, fontweight = 'bold') 
+
 
 def resetGrid():
   grid.fill(0)
@@ -38,5 +41,5 @@ def updateGrid(frame):
       return(img,)
   
     else:
-      ax.set_title("(Paused)")
+      ax.set_title(f"(Paused) Total heat: {total_heat}")
       return(img,)
