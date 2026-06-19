@@ -1,15 +1,17 @@
 import simulation
 import widgets
 
-hold = False
+## all functions related to widgets and keyboard buttons
+
+hold = False 
 heat_intensity = 100
 brush_size = 1
-mode = True
+mode = True ## if in paint mode (False) or click mode (True)
 
 def buttonPresses(event):
     if event.key ==  ' ':
       simulation.pause = not simulation.pause
-    if event.key == 'r':
+    elif event.key == 'r':
       simulation.resetGrid()
 
 def changeMode(event):
@@ -23,14 +25,14 @@ def changeMode(event):
 
 def addHeat(event):
   global hold
-  if event.inaxes == simulation.ax:
-    if event.name == 'button_release_event':
+  if event.inaxes == simulation.ax: ## checks if the event is out of bounds
+    if event.name == 'button_release_event': ## checks if mouse is being held down
       hold = False
     elif event.name == 'button_press_event':
       hold = True
-    if event.name == 'button_press_event':
+    if event.name == 'button_press_event': ## adds heat if mouse is clicked
       simulation.grid[int(event.ydata), int(event.xdata)] += heat_intensity
-    elif event.name == 'motion_notify_event' and hold and not mode:
+    elif event.name == 'motion_notify_event' and hold and not mode: ## adds heat if mouse is pressed, in motion, and in paint mode
       if brush_size == 1:
         simulation.grid[int(event.ydata), int(event.xdata)] += heat_intensity
       else:

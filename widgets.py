@@ -1,6 +1,8 @@
 import matplotlib.widgets as widget
 import simulation
 
+## creates all sliders and buttons
+
 diffusion_slider_axes = simulation.plt.axes([0.2, 0.075, 0.50, 0.05])
 diffusion_slider = widget.Slider(ax = diffusion_slider_axes, 
                           label= 'Thermal Diffusivity', 
