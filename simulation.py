@@ -16,7 +16,7 @@ img = ax.imshow(grid, vmin = 0, vmax = 500, cmap='magma', interpolation = 'bilin
 scale = fig.colorbar(img)
 plt.subplots_adjust(bottom = 0.2)
 fig.canvas.manager.set_window_title("Heat Dissipation")
-plt.text(26, 30.5, "Keyboard Functions: \nR = reset \nSpace = pause", fontsize = 10, fontweight = 'bold') 
+plt.text(26.5, 30.5, "Keyboard Functions: \nR = reset \nSpace = pause", fontsize = 10, fontweight = 'bold') 
 
 
 def resetGrid():
@@ -28,7 +28,7 @@ def resetGrid():
 
 def randomize(event):
   global grid
-  r = rng.random((25,25)) ## 25x25 grid of random float values
+  r = rng.random((len(grid),len(grid))) ## 25x25 grid of random float values
   grid[r> 0.65] = 500
   img.set_data(grid)
 

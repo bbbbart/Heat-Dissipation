@@ -19,7 +19,7 @@ brush_slider_axes = simulation.plt.axes([0.08, 0.35, 0.05, 0.5])
 brush_slider = widget.Slider(ax = brush_slider_axes, 
                           label= 'Brush Size', 
                           valmin = 1, 
-                          valmax = 4, orientation = 'vertical', valstep = 1.0)
+                          valmax = 3, orientation = 'vertical', valstep = 1.0)
 
 mode_button_axes = simulation.fig.add_axes([0.05, 0.18, 0.12, 0.06])
 mode_button = widget.Button(ax = mode_button_axes, 

@@ -30,7 +30,7 @@ def addHeat(event):
       hold = False
     elif event.name == 'button_press_event':
       hold = True
-    if event.name == 'button_press_event': ## adds heat if mouse is clicked
+    if event.name == 'button_press_event' and mode: ## adds heat if mouse is clicked
       simulation.grid[int(event.ydata), int(event.xdata)] += heat_intensity
     elif event.name == 'motion_notify_event' and hold and not mode: ## adds heat if mouse is pressed, in motion, and in paint mode
       if brush_size == 1:
