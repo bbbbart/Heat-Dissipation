@@ -26,3 +26,10 @@ mode_button = widget.Button(ax = mode_button_axes,
                        label = 'Mode: Click', 
                        color = 'lightgray', 
                        hovercolor = 'gray')
+
+
+randomize_button_axes = simulation.fig.add_axes([0.85, 0.18, 0.12, 0.06])
+randomize_button = widget.Button(ax = randomize_button_axes, 
+                       label = 'Randomize', 
+                       color = 'lightgray', 
+                       hovercolor = 'gray')

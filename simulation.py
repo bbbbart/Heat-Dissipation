@@ -8,6 +8,7 @@ ghost_grid = np.zeros((27,27)) ## additional grid to do calculations at boundari
 diffusion_rate = 0.1 
 pause = False
 total_heat = 0
+rng = np.random.default_rng(16) ## creates random generator
 
 fig, ax = plt.subplots()
 fig.set_size_inches(8,6)
@@ -23,6 +24,13 @@ def resetGrid():
   grid.fill(0)
   ghost_grid.fill(0)
   total_heat = 0
+  img.set_data(grid)
+
+def randomize(event):
+  global grid
+  r = rng.random((25,25)) ## 25x25 grid of random float values
+  grid[r> 0.65] = 500
+  img.set_data(grid)
 
 def updateGrid(frame):
     global grid, total_heat

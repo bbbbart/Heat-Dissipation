@@ -15,6 +15,7 @@ def main():
     widgets.diffusion_slider.on_changed(ui.updateDiffusion)
     widgets.intensity_slider.on_changed(ui.updateIntensity)
     widgets.brush_slider.on_changed(ui.updateBrush)
+    widgets.randomize_button.on_clicked(simulation.randomize)
 
     ani = animation.FuncAnimation(simulation.fig, simulation.updateGrid, frames = 999, interval = 200)
     simulation.plt.show()
