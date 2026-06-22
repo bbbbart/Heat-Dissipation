@@ -17,7 +17,7 @@ def main():
     widgets.brush_slider.on_changed(ui.updateBrush)
     widgets.randomize_button.on_clicked(simulation.randomize)
 
-    ani = animation.FuncAnimation(simulation.fig, simulation.updateGrid, frames = 999, interval = 200)
+    ani = animation.FuncAnimation(simulation.fig, simulation.updateGrid, frames = 999, interval = 100)
     simulation.plt.show()
 
 if __name__ == "__main__":
