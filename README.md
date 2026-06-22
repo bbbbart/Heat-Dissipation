@@ -13,19 +13,21 @@ This project is a simulation that models the spread of heat in a grid, using fin
 The amound of heat that spreads from one point to another depends on the difference in temperature between them. More heat spreads from two points that have a difference of 50 C rather than two points with a difference of 5 C. After enough has passed, each point will end up having the same temperature, which stops more heat from being transferred
 ### Numerical Analysis
 
-The spread of heat can be modeled by using:  $\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}$, a partial differential equation. Finite difference approximates derivatives by using the distance between certain points, instead of solving the equation at one specific point.
+This can be modeled by using the partial differential Heat Equation, which solves for the rate a which heat transfers:  
 
-Using finite difference the change in heat at a specific point can be found based on the four adjacent points. Assuming the distance between each point equals 1, the change in heat can be found using:
+### $\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}$
 
-$\Delta T_{x,y} =\alpha(T_{x+1,y} + T_{x-1,y} + T_{x,y+1} + T_{x,y-1})$
+A way of approximating the solutions to this equation is by using finite difference. Finite difference approximates derivatives by using the distance between certain points. The form of finite difference this code uses is called FTCS (forward-time-centered scheme). In this method, future states are approximated based on the initial state, and the derivative at a point is approximated by using both its forward and backward points on the axis. By using this to approximate the second derivative in the heat equation, and by assuming that $\Delta x = 1$ and each timestep is $t = 1$, you can get the equation:
 
-Where $\alpha$ is thermal diffusivity (how quickly heat spreads through a material) and $T_{x,y}$ is the Temperature at a point (x,y).
+### $\Delta T_{y}^{x} =\alpha(T_{y}^{x+1} + T_{y}^{x-1} + T_{y+1}^{x} + T_{y-1}^{x})$
 
-At each update of the simulation, this equation is used to see how much the temperature at a point should change. Links to resources that break down in depth how that equation can be derived are found at the end of this page.
+Where $\alpha$ is thermal diffusivity (how quickly heat spreads through a material) and $T_{y}^{x}$ is the Temperature at a point (x,y).
+
+At each update of the simulation, this equation is used to see how much the temperature at a point should change. More information on the math behind this can be found at the bottom of this page.
 
 ### Boundary Conditions
 
-The simulation uses an insulated boundary which prevents heat from leaking out. This is done by using an additional 27x27 grid that copies the border of the original grid. Putting both grids on top of each other creates a 2 cell thick border of identical values, which prevents heat from transeferring outside that wall.
+The simulation uses an insulated boundary which prevents heat from leaking out. This is done by using an additional 27x27 grid that copies the border of the original grid. Putting both grids on top of each other creates a 2 cell thick border of identical values, which prevents heat from transferring outside that wall.
 
 ### UI
 
@@ -50,10 +52,15 @@ Add heat in a random pattern, with each cell having a 35% chance.
 
 ## Requirements and Running
 
-See release 1.0.0 for link to download under `HeatDissipation.py`
+See release 1.0.0 and download `HeatDissipation.py`. Click the download to run the program.
 
 or
 
 Clone repository and download requirements under `requirements.txt`
 
 ## More Info
+[Heat Equation](https://en.wikipedia.org/wiki/Heat_equation)
+
+[Finite Difference Approximations of Derivatives](https://www.dam.brown.edu/people/alcyew/handouts/numdiff.pdf)
+
+[FTCS Scheme in a 2D Heat Equation](https://www.scirp.org/journal/paperinformation?paperid=143957)
