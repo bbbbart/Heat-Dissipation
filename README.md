@@ -1,8 +1,8 @@
 # Heat Dissipation
 
-<img width="782" height="590" alt="Recording 2026-06-22 165337" src="https://github.com/user-attachments/assets/df90ca92-19d2-4646-9b82-0d74950be0ae" />
-
 This project uses NumPy and finite difference numerical analysis to model the spread and dissipation of heat throughout a grid.
+
+<img width="790" height="584" alt="Recording 2026-06-22 183045" src="https://github.com/user-attachments/assets/a55e2f1e-b1b0-4dd5-914c-6404fe02a7a7" />
 
 ## Features
 
@@ -40,7 +40,7 @@ The simulation uses an insulated boundary which prevents heat from leaking out. 
 The interface features multiple sliders and buttons, including:
 
 #### <u>Mode</u>
-Switch between click mode (Add heat to individual cells) and paint mode (Hold and move mouse to add heat to a wide area)
+Switch between click mode (Click to add heat to individual cells) and paint mode (Hold and move mouse to add heat to a wide area).
 
 #### <u>Brush size</u>
 Change the size of area filled while in paint mode.
@@ -56,7 +56,7 @@ Add heat in a random pattern to 35% of cells.
 
 ## Requirements and Running
 
-Download the latest release and run the executable `HeatDissipation.exe`.
+Download the latest release and run the executable `Heat.Dissipation.exe`.
 
 ## More Info
 [Heat Equation](https://en.wikipedia.org/wiki/Heat_equation)
