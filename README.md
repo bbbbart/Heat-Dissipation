@@ -18,7 +18,7 @@ Heat always spreads from a higher temperature region to a lower temperature regi
 
 ### $\frac{\partial u}{\partial t} = \alpha (\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2})$
 
-A way of approximating the solutions to this equation is by using finite difference. Finite difference approximates derivatives by using the distance between certain points. The form of finite difference this code uses is called FTCS (forward-time-centered scheme). In this method, future states are approximated based on the current state, and the second derivative is approximated by using neighboring points in the x and y directions. By using this to approximate the second derivative in the heat equation, and by assuming that $\Delta x = \Delta y = 1$ and a timestep of $\Delta t = 1$, you can get the equation:
+A way of approximating the solutions to this equation is by using finite difference. Finite difference approximates derivatives by using the distance between certain points. The form of finite difference this code uses is called FTCS (forward-time-centered scheme). In this method, future states are approximated based on the current state, and the second derivative is approximated by using neighboring points in the x and y directions. Using this method, and by assuming that $\Delta x = \Delta y = 1$ and a timestep of $\Delta t = 1$, you can get the equation:
 
 ### $u_{x, y}^{new} = u_{x,y} + \alpha(u_{x+1, y} + u_{x-1, y} + u_{x, y+1} + u_{x, y-1} - 4u_{x, y})$
 
@@ -28,7 +28,7 @@ At each update of the simulation, this equation is used to see how much the temp
 
 ### Boundary Conditions
 
-The simulation uses an insulated boundary which prevents heat from leaking out. This is done by using an additional 27x27 grid and copying the original 25x25 to its center. The value of the border cells of the larger grid is made equal to the border values of the original grid, preventing heat from flowing across the boundary. 
+The simulation uses an insulated boundary which prevents heat from leaking out. This is done by using an additional 27x27 grid and copying the original 25x25 to its center. The values of the border cells of the larger grid are made equal to the border values of the original grid, preventing heat from flowing across the boundary. 
 
 ### UI
 
@@ -44,7 +44,7 @@ Switch between click mode (Click to add heat to individual cells) and paint mode
 Change the size of area filled while in paint mode.
 
 #### <u>Thermal Diffusivity</u>
-Choose how quickly the heat spreads through the grid. Thermal diffusivity is limited to a range that keeps the simulation stable.
+Choose how quickly the heat spreads throughout the grid. Thermal diffusivity is limited to a range that keeps the simulation stable.
 
 #### <u>Heat Intensity</u>
 How much heat to add in each cell while clicking.
