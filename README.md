@@ -12,11 +12,9 @@ This project uses NumPy and finite difference numerical analysis to model the sp
 - Insulated boundary
 - Visual grid using Matplotlib
 
-Heat always spreads from a higher temperature region to a lower temperature region. The speed at which heat spreads depends on the difference in temperature between the two regions. Heat transfers faster the greater the difference between the temperatures. This transfer happens until equilibrium, when heat is distributed equally.
-
 ### Numerical Analysis
 
-This can be modeled by using the partial differential heat equation, which solves for the rate at which heat transfers:  
+Heat always spreads from a higher temperature region to a lower temperature region. The speed at which heat spreads depends on the difference in temperature between the two regions. Heat transfers faster the greater the difference between the temperatures. This transfer happens until equilibrium, when heat is distributed equally. This can be modeled by using the partial differential heat equation, which solves for the rate at which heat transfers:  
 
 ### $\frac{\partial u}{\partial t} = \alpha (\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2})$
 
