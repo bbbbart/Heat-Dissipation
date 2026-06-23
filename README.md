@@ -56,6 +56,10 @@ Add heat in a random pattern to 35% of cells.
 
 Download the latest release and run the executable `Heat.Dissipation.exe`.
 
+or
+
+Clone the repository and run `pip install -r requirements.txt` to install all required libraries.
+
 ## More Info
 [Heat Equation](https://en.wikipedia.org/wiki/Heat_equation)
 
